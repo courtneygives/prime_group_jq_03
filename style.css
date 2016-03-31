@@ -1,10 +1,28 @@
 img{
-    height:60px;
-    width:60px;
-    display: inline;
+  height:60px;
+  width:60px;
+  display: inline;
 }
-li{
-    list-style-type: none;
-    display: inline;
-    padding: 20px;
+
+.groupNumbers li{
+  list-style-type: none;
+  display: inline;
+  padding: 20px;
+}
+
+.groups ul{
+  list-style: none;
+  display: inline-block;
+  vertical-align: top;
+
+}
+
+.groups li:first-child {
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.generateButton {
+  padding-right: 100px;
 }

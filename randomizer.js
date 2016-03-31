@@ -9,9 +9,9 @@ $(function() {
 
 
 
-  var permanentAdjs = ["Funky", "Raging", "Surly", "Plain", "Purple", "Dangerous", "Unsinkable", "Wounded", "Wooden", "Laminated", "Jolly", "Ludicrous", "Hungry", "Waxing", "Waning", "Adjustable", "Disposable", "Super Fast", "Rambunctious", "Wise", "Superior"]
+  var permanentAdjs = ["Funky", "Raging", "Surly", "Plain", "Purple", "Dangerous", "Unsinkable", "Wounded", "Wooden", "Laminated", "Jolly", "Four-Legged", "Peachy", "Gelatinous", "Possibly-Illegal", "Hydrophobic", "Powdery", "Troubled", "Dreamy", "Ludicrous", "Authoritative", "Definitely-Trustworthy", "Heroic", "Righteous", "Adjustable", "Disposable", "Super Fast", "Rambunctious"]
 
-  var permanentNouns = ["Donkies", "Hors d'oeuvres", "Bananna Sandwiches", "Troupers", "Ents", "Pterodactyls", "Ponies", "Narwals", "Tauntauns", "Squishy Cubes", "Cylinders", "Grassy Knoll", "Hot Dish", "Lake-Dwellers", "Jam-bro-rees", "Time-Travelers", "Astronauts"]
+  var permanentNouns = ["Donkies", "Hors d'oeuvres", "Bananna Sandwiches", "Troupers", "Ents", "Pterodactyls", "Ponies", "Narwals", "Tauntauns", "Statues", "Squishy Cubes", "Cylinders", "Grassy Knolls", "Hot Dishes", "Lake-Dwellers", "Jam-bro-rees", "Blades", "Time-Travelers", "Astronauts"]
 
   var teams=[[]];    //declare two-dimensional array
 
@@ -19,14 +19,35 @@ $(function() {
 
   $(".number").click(function(){
     numTeams = $(this).children().attr("alt");
+    console.log(numTeams)
 
-    generateTeams(numTeams);
-    generateTeamNames(numTeams);
-    console.log(teams);
   });
 
-//generate button
+  //generate button
+  $("#generateButton").click(function(){
+    if (numTeams == 0) {
+      alert("Please select number of groups!");
+    }else {
+      generateTeams(numTeams);
+      generateTeamNames(numTeams);
+      writeGroups(numTeams);
 
+      console.log(teams);
+      console.log(numTeams)
+    }
+  });
+
+function writeGroups (numTeams){
+  for (i = 0; i < numTeams; i++){
+      var teamDisplay = "<ul>";
+    for(j = 0; j < teams[i].length; j++){
+      teamDisplay += "<li>" + teams[i][j] + "</li>";
+    }
+    teamDisplay += "</ul>";
+    $(".groups").append(teamDisplay);
+  }
+
+}
 
 
   //--------------------------- shuffler ---------------------------//
@@ -51,13 +72,14 @@ $(function() {
   }
 
 
-  //--------------------------- generate button ---------------------------//
+  //--------------------------- generate teams ---------------------------//
 
   function generateTeams (numTeams) {    //// takes shuffled array
     var randNames=shuffle(permanentNames);
     var groupI = 0;
+    console.log(numTeams)
 
-    //10 should be replace with number of teams
+    //10 should be replaced with number of teams
     for(var x =0; x < numTeams-1; x++){
       teams.push([]);
     }
