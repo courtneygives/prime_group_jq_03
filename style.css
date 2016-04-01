@@ -2,6 +2,11 @@ img{
   height:60px;
   width:60px;
   display: inline;
+  border: 1px solid black;
+}
+
+body {
+  background: lightcoral;
 }
 
 .groupNumbers li{
